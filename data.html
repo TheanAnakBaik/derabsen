@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="card">
+<h2>Data Absensi</h2>
+<table id="tbl"></table>
+</div>
+
+<script>
+fetch("api/get.php")
+.then(r=>r.json())
+.then(d=>{
+  let h="<tr><th>No</th><th>Nama</th><th>Jam</th><th>Tanggal</th></tr>";
+  d.forEach((x,i)=>{
+    h+=`<tr><td>${i+1}</td><td>${x.nama}</td><td>${x.jam}</td><td>${x.tanggal}</td></tr>`;
+  });
+  tbl.innerHTML=h;
+});
+</script>
+</body>
+</html>
